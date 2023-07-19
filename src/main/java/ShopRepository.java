@@ -55,17 +55,15 @@ public class ShopRepository {
         if (findById(id) == null){
             throw new  NotFoundException ("Element with id: " + id + " not found");
         }
-        Product[] tmp = new Product[products.length - 1];
-        int copyToIndex = 0;
-        for (Product product : products) {
-            if (product.getId() != id) {
-                tmp[copyToIndex] = product;
-                copyToIndex++;
+        remove(id);
+        return products;
+    }
+    public void addById(Product product) {
+        for (int i = 1; i <= products.length; i++){
+            if (findById(product.getId()) == null){
+                products = addToArray(products, product);
             }
         }
-        products = tmp;
-        return tmp;
     }
-
 
 }
