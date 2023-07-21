@@ -3,6 +3,7 @@ public class ShopRepository {
 
     /**
      * Вспомогательный метод для имитации добавления элемента в массив
+     *
      * @param current — массив, в который мы хотим добавить элемент
      * @param product — элемент, который мы хотим добавить
      * @return — возвращает новый массив, который выглядит, как тот, что мы передали,
@@ -19,6 +20,7 @@ public class ShopRepository {
 
     /**
      * Метод добавления товара в репозиторий
+     *
      * @param product — добавляемый товар
      */
     public void add(Product product) {
@@ -51,19 +53,11 @@ public class ShopRepository {
         return null;
     }
 
-    public Product[] removeById (int id) {
-        if (findById(id) == null){
-            throw new  NotFoundException ("Element with id: " + id + " not found");
+    public Product[] removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException("Element with id: " + id + " not found");
         }
         remove(id);
         return products;
     }
-    public void addById(Product product) {
-        for (int i = 1; i <= products.length; i++){
-            if (findById(product.getId()) == null){
-                products = addToArray(products, product);
-            }
-        }
-    }
-
 }
